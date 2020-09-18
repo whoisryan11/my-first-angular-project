@@ -1,5 +1,28 @@
-<h2>{{bind1}}</h2>
+<h2>Current count is {{ count }}</h2>
+<h2 appHighlight>{{bind1}}</h2>
 <h2 [innerText] = "bind2"></h2>
 <p><button (click) = "onClick()">{{button}}</button></p>
-<h2>Enter your Name: <input type = 'text' [(ngModel)] = 'name' /></h2>
+<h2 *ngIf = "clicked">Button Clicked</h2>
+<h2 [ngStyle] = "{'color':'red' }">Enter your Name: <input type = 'text' [(ngModel)] = 'name' /></h2>
 <p>Hello {{name}}!!!</p>
+
+
+
+<div [ngStyle] = "{'border': 'solid black 4px', 'max-width' : '400px'}">
+    <p [ngStyle] = "{'text-align' : 'center'}">London Clock</p>
+    <p [ngStyle] = "{'text-align' : 'center'}">
+        <span (click) = "timePause()" *ngIf="play">{{hour}} : </span> 
+        <span *ngIf="!play"><input style="width: 30px;" max="12" min="0" type='number' [(ngModel)] = 'hour' (keyup.enter)="timePause()" /> : </span>
+        <span (click) = "timePause()" *ngIf="play">{{mins}} : </span> 
+        <span *ngIf="!play"><input style="width: 30px;" max="59" min="0" type='number' [(ngModel)] = 'mins' (keyup.enter)="timePause()" /> : </span>
+        <span (click) = "timePause()" *ngIf="play">{{sec}}</span>
+        <span *ngIf="!play"><input style="width: 30px;" max="59" min="0" type='number' [(ngModel)] = 'sec' (keyup.enter)="timePause()" /> : </span>
+        &nbsp;
+        <span (click) = "timePause()" *ngIf="play">{{apm}}</span>
+        <span *ngIf="!play"><input style="width: 40px;" list="A_PM" [(ngModel)] = 'apm' (keyup.enter)="timePause()"/> </span>
+        <datalist id="A_PM">
+            <option value="AM"></option>
+            <option value="PM"></option>
+        </datalist>
+    </p>
+</div>

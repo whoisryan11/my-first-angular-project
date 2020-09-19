@@ -23,6 +23,7 @@ export class NewComponentComponent implements OnInit {
   sec : number;
   apm :string;
   play = true;
+  switch_pm = true;
   timer;
   constructor() { }
 
@@ -44,9 +45,14 @@ export class NewComponentComponent implements OnInit {
           this.mins = 0;
           this.hour += 1;
         }
-        if(this.hour >= 12){
-          this.hour = 0;
-          this.apm = ((this.apm == "AM") ? "PM" : "AM");
+        if(this.hour == 12){
+          if (this.switch_pm == true) {
+            this.apm = ((this.apm == "AM") ? "PM" : "AM");
+            this.switch_pm  = false;
+          }
+        } else if (this.hour == 13) {
+          this.hour = 1;
+          this.switch_pm = true;
         }
       }
       

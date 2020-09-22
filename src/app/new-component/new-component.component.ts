@@ -25,7 +25,9 @@ export class NewComponentComponent implements OnInit {
   play = true;
   switch_pm = true;
   timer;
-  constructor() { }
+  data = [];  constructor() { 
+    
+  }
 
 
   ngOnInit(): void {

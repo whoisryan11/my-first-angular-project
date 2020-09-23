@@ -7,18 +7,26 @@ import { HighlightDirective } from './highlight.directive';
 import { HttpClientModule } from '@angular/common/http'
 import { PseudoServiceService } from './pseudo-service.service';
 import { CRUDComponent } from './crud/crud.component';
+import { RouterModule} from '@angular/router';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewComponentComponent,
     HighlightDirective,
-    CRUDComponent
+    CRUDComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'clock', component: NewComponentComponent},
+      { path: 'posts', component: CRUDComponent},
+      { path: '**', component: NotfoundComponent}
+    ])
   ],
   providers: [PseudoServiceService],
   bootstrap: [AppComponent]

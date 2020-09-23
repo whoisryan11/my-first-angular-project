@@ -22,4 +22,18 @@ export class PseudoServiceService {
   deletePost(id) {
     return this.http.delete(`${this.postsUrl}/${id}`);
   }
+  createPost(userId: string, title: string, body: string) {
+    const postData = new FormData();
+    postData.append("userId", userId);
+    postData.append("title", title);
+    postData.append("body", body);
+    return this.http.post(`${this.postsUrl}`,postData);
+  }
+  updatePost(id, userId, title, body) {
+    const postData = new FormData();
+    postData.append("userId", userId);
+    postData.append("title", title);
+    postData.append("body", body);
+    return this.http.put(`${this.postsUrl}/${id}`, postData);
+  }
 }

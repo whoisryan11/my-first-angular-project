@@ -9,6 +9,9 @@ import { PostModel } from './post.model';
 export class CRUDComponent implements OnInit {
 
   posts: any = [];
+  title : string = '';
+  userId : string = '';
+  body : string = '';
 
   constructor(public service: PseudoServiceService) {
   }
@@ -26,6 +29,28 @@ export class CRUDComponent implements OnInit {
       return ele.id !== id
     })
     this.service.deletePost(id).subscribe(
+      res=> {
+        console.log(res)
+      },
+      error=> {
+        console.log(error)
+      })
+  }
+
+  createPost(){
+    this.service.createPost(this.userId.trim(),this.title.trim(), this.body.trim()).subscribe(
+      res =>{
+        console.log(res)
+      },
+      error => {
+        console.log(error)
+      })
+  }
+  updatePost(id, userId, title, body){
+    this.posts = this.posts.filter(ele => {
+      return ele.id !== id
+    })
+    this.service.updatePost(id, userId, title, body).subscribe(
       res=> {
         console.log(res)
       },

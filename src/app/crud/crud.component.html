@@ -1,17 +1,23 @@
+<label for = "userId">User ID: </label><input id = "userId" type = "text" [(ngModel)] = "userId"/><br>
+<label for = "title">Title: </label><input id = "title" type = "text" [(ngModel)] = "title" /><br>
+<label for = "body">Body: </label><input id = "body" type = "text" [(ngModel)] = "body" />
+<button (click) = "createPost()">Create</button>
 <div>
     <table>
         <tr>
-            <td style="width: 10%;"><p>ID</p></td>
+            <td style="width: 30px;"><p>ID</p></td>
             <td style="width: 10%;"><p>User ID</p></td>
             <td><p>Title</p></td>
             <td><p>Body</p></td>
-            <td style="width: 10%;"><p>Operation</p></td>
+            <td style="width: 10%;"> Update</td>
+            <td style="width: 10%;"><p>Deletion</p></td>
         </tr>
         <tr *ngFor="let post of posts">
-            <td><p>{{ post.id }}</p></td>
-            <td><p>{{ post.userId}}</p></td>
-            <td><p>{{ post.title | uppercase}}</p></td>
-            <td><p>{{ post.body }}</p></td>
+            <td><p style="width: 30px">{{ post.id }}</p></td>
+            <td><input style="width: 30px" type = "text" [(ngModel)] = 'post.userId'/></td>
+            <td><input type = "text" [(ngModel)] = 'post.title'/></td>
+            <td><input type = "text" [(ngModel)] = 'post.body'/></td>
+            <td><button (click) = "updatePost(post.id, post.userId, post.title, post.body)">Update</button></td>
             <td><button (click) = "deletePost(post.id)">Delete</button></td>
         </tr>
       

@@ -40,10 +40,11 @@ export class CRUDComponent implements OnInit {
   createPost(){
     this.service.createPost(this.userId.trim(),this.title.trim(), this.body.trim()).subscribe(
       res =>{
-        console.log(res)
+        this.posts.push(res);
+        console.log(res);
       },
       error => {
-        console.log(error)
+        console.log(error);
       })
   }
   updatePost(id, userId, title, body){

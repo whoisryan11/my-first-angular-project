@@ -10,7 +10,7 @@ import { CRUDComponent } from './crud/crud.component';
 import { RouterModule} from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 
-const route = [
+const Routes = [
   { path: 'clock', component: NewComponentComponent},
   { path: 'posts', component: CRUDComponent},
   { path: '**', component: NotfoundComponent}
@@ -28,7 +28,7 @@ const route = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(route)
+    RouterModule.forRoot(Routes)
   ],
   providers: [PseudoServiceService],
   bootstrap: [AppComponent]

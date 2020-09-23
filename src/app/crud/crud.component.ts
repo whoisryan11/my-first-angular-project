@@ -47,9 +47,6 @@ export class CRUDComponent implements OnInit {
       })
   }
   updatePost(id, userId, title, body){
-    this.posts = this.posts.filter(ele => {
-      return ele.id !== id
-    })
     this.service.updatePost(id, userId, title, body).subscribe(
       res=> {
         console.log(res)

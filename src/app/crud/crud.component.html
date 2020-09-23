@@ -1,12 +1,18 @@
 <div>
     <table>
         <tr>
-            <td><h4>Title</h4></td>
+            <td style="width: 10%;"><p>ID</p></td>
+            <td style="width: 10%;"><p>User ID</p></td>
+            <td><p>Title</p></td>
             <td><p>Body</p></td>
+            <td style="width: 10%;"><p>Operation</p></td>
         </tr>
         <tr *ngFor="let post of posts">
-            <td><h4>{{ post.title | uppercase}}</h4></td>
+            <td><p>{{ post.id }}</p></td>
+            <td><p>{{ post.userId}}</p></td>
+            <td><p>{{ post.title | uppercase}}</p></td>
             <td><p>{{ post.body }}</p></td>
+            <td><button (click) = "deletePost(post.id)">Delete</button></td>
         </tr>
       
     </table>

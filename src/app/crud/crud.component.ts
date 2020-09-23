@@ -8,16 +8,30 @@ import { PostModel } from './post.model';
 })
 export class CRUDComponent implements OnInit {
 
-  posts: PostModel[];
+  posts: any = [];
 
   constructor(public service: PseudoServiceService) {
   }
 
-  getPosts() {
-    this.service.getPosts().subscribe(post => (this.posts = post))
-  }
+ 
   ngOnInit(): void {
-    this.getPosts();
+    this.service.getPosts().subscribe(res => {
+      console.log(res);
+      this.posts = res;
+    })
+  }
+
+  deletePost(id) {
+    this.posts = this.posts.filter(ele => {
+      return ele.id !== id
+    })
+    this.service.deletePost(id).subscribe(
+      res=> {
+        console.log(res)
+      },
+      error=> {
+        console.log(error)
+      })
   }
 
 }

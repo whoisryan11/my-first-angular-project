@@ -13,14 +13,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PseudoServiceService {
-  private posts: PostModel[];
   private postsUrl: string = "https://jsonplaceholder.typicode.com/posts"
   constructor(private http: HttpClient) { }
-  printToConsole(args) {
-    console.log(args);
-  }
+  
   getPosts() {
     return this.http.get<PostModel[]>(`${this.postsUrl}`)
-    
+  }
+  deletePost(id) {
+    return this.http.delete(`${this.postsUrl}/${id}`);
   }
 }
